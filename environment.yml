@@ -1,0 +1,6 @@
+name: travis_anaconda_jupyter
+channels:
+- defaults
+dependencies:
+- python=3.5
+- jupyter==1.0

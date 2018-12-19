@@ -1,0 +1,30 @@
+language: java
+jdk: oraclejdk9
+install:
+- sudo apt-get update
+# We do this conditionally because it saves us some downloading if the
+# version is the same.
+- wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
+- conda config --set always_yes yes --set changeps1 no
+- conda update -q conda
+# Useful for debugging any issues with conda
+- conda info -a
+
+- conda env create -n test-environment python=3.5 -f environment.yml
+- source activate test-environment
+
+# Install the IJava kernel
+- wget https://github.com/SpencerPark/IJava/releases/download/v1.2.0/ijava-1.2.0.zip
+- unzip -d ijava ijava-1.2.0.zip
+- jupyter kernelspec install $(pwd)/ijava/java --sys-prefix --name=java
+- export IJAVA_KERNEL_DIR=$(jupyter kernelspec list | grep '^  java ' | awk '{ print $2 }')
+- sed -i "s!@KERNEL_INSTALL_DIRECTORY@!$IJAVA_KERNEL_DIR!" $IJAVA_KERNEL_DIR/kernel.json
+
+script:
+# Reexecute all notebooks and save the output
+- jupyter nbconvert --to notebook --execute --inplace --clear-output *.ipynb
+# Verify that the new output matches what was previously committed
+- git diff --exit-code
