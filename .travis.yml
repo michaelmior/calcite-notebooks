@@ -1,5 +1,9 @@
 language: java
-jdk: oraclejdk9
+
+jdk:
+- oraclejdk9
+- oraclejdk11
+
 install:
 - sudo apt-get update
 # We do this conditionally because it saves us some downloading if the
