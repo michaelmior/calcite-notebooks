@@ -24,7 +24,4 @@ install:
 - sed -i "s!@KERNEL_INSTALL_DIRECTORY@!$IJAVA_KERNEL_DIR!" $IJAVA_KERNEL_DIR/kernel.json
 
 script:
-# Reexecute all notebooks and save the output
-- jupyter nbconvert --to notebook --execute --inplace --clear-output *.ipynb
-# Verify that the new output matches what was previously committed
-- git diff --exit-code
+- ./check-notebooks.sh
