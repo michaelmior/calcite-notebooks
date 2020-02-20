@@ -5,7 +5,7 @@
 # Note that it's very primitive and will simply search for the current
 # version string so it may change things it's not supposed to.
 
-VERSION=1.20.0
+VERSION=1.21.0
 BUMP_TYPE=minor
 
 if [ $# -eq 1 ]; then
