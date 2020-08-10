@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Get the old version
 version=$(jq -r '.metadata.language_info.version' query-optimization.ipynb)
