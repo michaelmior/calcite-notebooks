@@ -3,4 +3,5 @@ channels:
 - defaults
 dependencies:
 - python=3.5
-- jupyter==1.0
+- notebook==5.5.0
+- jupyterlab==0.32.1
