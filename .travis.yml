@@ -17,7 +17,7 @@ install:
 # Useful for debugging any issues with conda
 - conda info -a
 
-- conda env create -n test-environment python=3.5 -f environment.yml
+- conda env create -n test-environment python=3.8 -f environment.yml
 - source activate test-environment
 
 # Install the IJava kernel
