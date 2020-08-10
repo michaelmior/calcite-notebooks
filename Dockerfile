@@ -3,7 +3,7 @@ FROM openjdk:10.0.1-10-jdk
 RUN apt-get update
 RUN apt-get install -y python3-pip
 
-RUN pip3 install --no-cache-dir notebook==5.5.* jupyterlab==0.32.*
+RUN pip3 install --no-cache-dir jupyterlab==2.2.4
 
 USER root
 
