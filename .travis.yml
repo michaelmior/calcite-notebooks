@@ -4,6 +4,10 @@ jdk:
 - oraclejdk9
 - oraclejdk11
 
+before_install:
+- rm "${JAVA_HOME}/lib/security/cacerts"
+- ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
+
 install:
 - sudo apt-get update
 # We do this conditionally because it saves us some downloading if the
